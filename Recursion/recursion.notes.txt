@@ -1,0 +1,24 @@
+Recursion is when function cals itself.
+
+// infinite loop
+callMe() {
+    callMe();
+    callMe();
+}
+
+We ned to break out of the loop.
+One way to do this is to RETURN.
+Another is base condition IF statement;
+Often forget to return function to preserv calculated value.
+
+Usage:
+
+FACTORIAL
+function factorial(n) {
+  if (n === 1) return 1;
+  return n*factorial(n-1);
+}
+console.log(factorial(5));
+
+We go down to base case and then bubleup the result.
+
