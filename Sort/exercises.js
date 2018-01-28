@@ -36,3 +36,30 @@ function insertionSort(list) {
 }
 
 //console.log(insertionSort(randomList));
+
+
+function mergeSort(list) {
+    if (list.length == 1) return list;
+    let pivot = Math.floor(list.length/2); // keeps it closer to the left
+    let leftList = list.slice(0, pivot);
+    let rightList = list.slice(pivot, list.length);
+    return merge(mergeSort(leftList), mergeSort(rightList));
+}
+
+function merge(leftList, rightList) {
+    let merged = [];
+    while (leftList.length || rightList.length){
+        if(!leftList.length) {
+            merged.push(rightList.shift());
+        } else if(!rightList.length){
+            merged.push(leftList.shift());
+        } else if(leftList[0] >= rightList[0]){
+            merged.push(rightList.shift());
+        } else {
+            merged.push(leftList.shift());
+        }
+    }
+    return merged;
+}
+
+console.log(mergeSort(randomList))
