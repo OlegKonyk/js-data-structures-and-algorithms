@@ -46,6 +46,7 @@ function mergeSort(list) {
     return merge(mergeSort(leftList), mergeSort(rightList));
 }
 
+// merge sort helper
 function merge(leftList, rightList) {
     let merged = [];
     while (leftList.length || rightList.length){
@@ -62,4 +63,27 @@ function merge(leftList, rightList) {
     return merged;
 }
 
-console.log(mergeSort(randomList))
+//console.log(mergeSort(randomList))
+
+function quickSort(list) {
+    if (list.length <= 1) return list;
+    
+    let pivot = list[list.length - 1];
+    let left = [];
+    let right = [];
+
+    for (let i = 0; i < list.length - 1; i++) {
+        if (list[i] < pivot) {
+            left.push(list[i]);
+        } else {
+            right.push(list[i]);
+        }
+    }
+
+    let sortedLeft = quickSort(left);
+    let sortedRight = quickSort(right);
+
+    return [...sortedLeft, pivot, ...sortedRight];
+}
+
+console.log(quickSort(randomList))
